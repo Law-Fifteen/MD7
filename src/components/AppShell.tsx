@@ -36,7 +36,7 @@ export function AppShell({ activeView, onNavigate, onSearch, children }: AppShel
       <div className="relative flex min-h-screen">
         <aside className="hidden w-72 shrink-0 border-r border-white/10 bg-white/[0.06] px-5 py-6 backdrop-blur-xl lg:block">
           <div className="mb-9 flex items-center gap-3">
-            <img src="/Resources/MD7-Logo.svg" alt="MD7" className="h-10 w-10 rounded-xl bg-white p-2" />
+            <img src="./Resources/MD7-Logo.svg" alt="MD7" className="h-10 w-10 rounded-xl bg-white p-2" />
             <div>
               <p className="text-sm font-semibold">MD7 Sales Academy</p>
               <p className="text-xs text-white/50">Commercial judgment system</p>
@@ -70,7 +70,7 @@ export function AppShell({ activeView, onNavigate, onSearch, children }: AppShel
                 <button className="rounded-xl border border-white/15 p-2" aria-label="Open navigation">
                   <Menu className="h-5 w-5" />
                 </button>
-                <img src="/Resources/MD7-Logo.svg" alt="MD7" className="h-9 w-9 rounded-xl bg-white p-2" />
+                <img src="./Resources/MD7-Logo.svg" alt="MD7" className="h-9 w-9 rounded-xl bg-white p-2" />
               </div>
               <div className="hidden lg:block">
                 <p className="text-xs uppercase tracking-[0.28em] text-teal">Premium commercial academy</p>

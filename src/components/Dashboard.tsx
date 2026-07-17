@@ -1,7 +1,7 @@
 import { ArrowRight, BookOpen, Clock, Target, TrendingUp } from "lucide-react";
 import type { ElementType } from "react";
 import { academyContent } from "../content/generatedContent";
-import { competencyAreas, productWarnings } from "../content/platform";
+import { competencyAreas } from "../content/platform";
 import type { Chapter } from "../types";
 import { GlassPanel } from "./GlassPanel";
 import { ProgressBar } from "./ProgressBar";
@@ -21,7 +21,7 @@ export function Dashboard({ currentChapter, completedCount, onContinue }: Dashbo
         <div className="relative min-h-[420px] p-6 sm:p-8">
           <video
             className="absolute inset-0 h-full w-full object-cover opacity-18"
-            src="/Resources/MD7 Logo Flair.mp4"
+            src="./Resources/MD7 Logo Flair.mp4"
             autoPlay
             muted
             loop
@@ -81,14 +81,7 @@ export function Dashboard({ currentChapter, completedCount, onContinue }: Dashbo
           </div>
         </GlassPanel>
 
-        <GlassPanel className="p-6">
-          <p className="text-xs uppercase tracking-[0.22em] text-amber">Architect Notes</p>
-          <div className="mt-4 space-y-3 text-sm leading-6 text-white/68">
-            {productWarnings.map((warning) => (
-              <p key={warning}>{warning}</p>
-            ))}
-          </div>
-        </GlassPanel>
+
       </div>
     </div>
   );
