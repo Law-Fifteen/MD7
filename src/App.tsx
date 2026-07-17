@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from "react";
+import { useCallback, useEffect, useMemo, useState } from "react";
 import { AppShell } from "./components/AppShell";
 import { ChapterReader } from "./components/ChapterReader";
 import { Dashboard } from "./components/Dashboard";
@@ -6,6 +6,7 @@ import { KnowledgeLibrary } from "./components/KnowledgeLibrary";
 import { PracticePanel } from "./components/PracticePanel";
 import { ProgressView } from "./components/ProgressView";
 import { SearchOverlay } from "./components/SearchOverlay";
+import { Splash } from "./components/Splash";
 import { academyContent } from "./content/generatedContent";
 import { useLocalState } from "./lib/useLocalState";
 
@@ -21,6 +22,9 @@ export function App() {
   const [reflections, setReflections] = useLocalState<Record<string, string>>("md7-reflections", {});
   const [searchOpen, setSearchOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState("");
+  const [showSplash, setShowSplash] = useState(true);
+
+  const handleSplashComplete = useCallback(() => setShowSplash(false), []);
 
   const activeChapter = useMemo(() => {
     return academyContent.chapters.find((chapter) => chapter.id === activeChapterId) ?? academyContent.chapters[0];
@@ -98,6 +102,7 @@ export function App() {
 
   return (
     <>
+      {showSplash && <Splash onComplete={handleSplashComplete} />}
       <AppShell activeView={activeView} onNavigate={(view) => setActiveView(view as View)} onSearch={() => setSearchOpen(true)}>
         {renderView()}
       </AppShell>

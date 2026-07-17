@@ -1,5 +1,6 @@
 import { ArrowRight, BookOpen, Clock, Target, TrendingUp } from "lucide-react";
 import type { ElementType } from "react";
+import { useEffect, useRef } from "react";
 import { academyContent } from "../content/generatedContent";
 import { competencyAreas } from "../content/platform";
 import type { Chapter } from "../types";
@@ -14,17 +15,40 @@ type DashboardProps = {
 
 export function Dashboard({ currentChapter, completedCount, onContinue }: DashboardProps) {
   const progress = Math.round((completedCount / academyContent.chapters.length) * 100);
+  const videoRef = useRef<HTMLVideoElement>(null);
+
+  useEffect(() => {
+    const video = videoRef.current;
+    if (!video) return;
+
+    video.playbackRate = 0.5;
+    let timer: ReturnType<typeof setTimeout>;
+
+    const handleEnded = () => {
+      video.pause();
+      timer = setTimeout(() => {
+        video.currentTime = 0;
+        video.play();
+      }, 10000);
+    };
+
+    video.addEventListener("ended", handleEnded);
+    return () => {
+      clearTimeout(timer);
+      video.removeEventListener("ended", handleEnded);
+    };
+  }, []);
 
   return (
     <div className="grid gap-6 xl:grid-cols-[1.35fr_0.65fr]">
       <GlassPanel className="overflow-hidden">
         <div className="relative min-h-[420px] p-6 sm:p-8">
           <video
+            ref={videoRef}
             className="absolute inset-0 h-full w-full object-cover opacity-18"
             src="./Resources/MD7 Logo Flair.mp4"
             autoPlay
             muted
-            loop
             playsInline
           />
           <div className="absolute inset-0 bg-gradient-to-r from-academy via-academy/88 to-academy/45" />
