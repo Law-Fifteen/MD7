@@ -1,0 +1,113 @@
+import { useEffect, useMemo, useState } from "react";
+import { AppShell } from "./components/AppShell";
+import { ChapterReader } from "./components/ChapterReader";
+import { Dashboard } from "./components/Dashboard";
+import { KnowledgeLibrary } from "./components/KnowledgeLibrary";
+import { PracticePanel } from "./components/PracticePanel";
+import { ProgressView } from "./components/ProgressView";
+import { SearchOverlay } from "./components/SearchOverlay";
+import { academyContent } from "./content/generatedContent";
+import { useLocalState } from "./lib/useLocalState";
+
+type View = "Dashboard" | "Learning Path" | "Knowledge Library" | "Frameworks" | "Conversations" | "Practice" | "Progress";
+
+export function App() {
+  const [activeView, setActiveView] = useLocalState<View>("md7-active-view", "Dashboard");
+  const [activeChapterId, setActiveChapterId] = useLocalState<string>(
+    "md7-active-chapter",
+    academyContent.chapters[0]?.id ?? "",
+  );
+  const [completed, setCompleted] = useLocalState<string[]>("md7-completed-chapters", []);
+  const [reflections, setReflections] = useLocalState<Record<string, string>>("md7-reflections", {});
+  const [searchOpen, setSearchOpen] = useState(false);
+  const [searchQuery, setSearchQuery] = useState("");
+
+  const activeChapter = useMemo(() => {
+    return academyContent.chapters.find((chapter) => chapter.id === activeChapterId) ?? academyContent.chapters[0];
+  }, [activeChapterId]);
+
+  useEffect(() => {
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if ((event.ctrlKey || event.metaKey) && event.key.toLowerCase() === "k") {
+        event.preventDefault();
+        setSearchOpen(true);
+      }
+      if (event.key === "Escape") {
+        setSearchOpen(false);
+      }
+    };
+    window.addEventListener("keydown", handleKeyDown);
+    return () => window.removeEventListener("keydown", handleKeyDown);
+  }, []);
+
+  const openChapter = (chapterId: string) => {
+    setActiveChapterId(chapterId);
+    setActiveView("Learning Path");
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
+
+  const currentIndex = academyContent.chapters.findIndex((chapter) => chapter.id === activeChapter.id);
+  const readingProgress = Math.round(((currentIndex + 1) / academyContent.chapters.length) * 100);
+
+  const renderView = () => {
+    if (activeView === "Dashboard") {
+      return (
+        <Dashboard
+          currentChapter={activeChapter}
+          completedCount={completed.length}
+          onContinue={() => setActiveView("Learning Path")}
+        />
+      );
+    }
+
+    if (activeView === "Learning Path") {
+      return (
+        <ChapterReader
+          chapter={activeChapter}
+          progress={readingProgress}
+          reflection={reflections[activeChapter.id] ?? ""}
+          isComplete={completed.includes(activeChapter.id)}
+          onReflectionChange={(value) => setReflections({ ...reflections, [activeChapter.id]: value })}
+          onComplete={() => {
+            setCompleted((previous) =>
+              previous.includes(activeChapter.id) ? previous : [...previous, activeChapter.id],
+            );
+          }}
+          onPrevious={() => {
+            const previous = academyContent.chapters[Math.max(0, currentIndex - 1)];
+            openChapter(previous.id);
+          }}
+          onNext={() => {
+            const next = academyContent.chapters[Math.min(academyContent.chapters.length - 1, currentIndex + 1)];
+            openChapter(next.id);
+          }}
+        />
+      );
+    }
+
+    if (activeView === "Practice") {
+      return <PracticePanel />;
+    }
+
+    if (activeView === "Progress") {
+      return <ProgressView completed={completed} onOpenChapter={openChapter} />;
+    }
+
+    return <KnowledgeLibrary onOpenChapter={openChapter} />;
+  };
+
+  return (
+    <>
+      <AppShell activeView={activeView} onNavigate={(view) => setActiveView(view as View)} onSearch={() => setSearchOpen(true)}>
+        {renderView()}
+      </AppShell>
+      <SearchOverlay
+        open={searchOpen}
+        query={searchQuery}
+        onQueryChange={setSearchQuery}
+        onClose={() => setSearchOpen(false)}
+        onOpenChapter={openChapter}
+      />
+    </>
+  );
+}
