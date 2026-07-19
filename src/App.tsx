@@ -3,14 +3,18 @@ import { AppShell } from "./components/AppShell";
 import { ChapterReader } from "./components/ChapterReader";
 import { Dashboard } from "./components/Dashboard";
 import { KnowledgeLibrary } from "./components/KnowledgeLibrary";
-import { PracticePanel } from "./components/PracticePanel";
 import { ProgressView } from "./components/ProgressView";
 import { SearchOverlay } from "./components/SearchOverlay";
 import { Splash } from "./components/Splash";
+import { IfThisThenThatPage } from "./components/IfThisThenThatPage";
+import { CommonMistakesPage } from "./components/CommonMistakesPage";
+import { WhatGreatAEsNoticePage } from "./components/WhatGreatAEsNoticePage";
+import { ExitGatesPage } from "./components/ExitGatesPage";
+import { ManagerCoachingQuestionsPage } from "./components/ManagerCoachingQuestionsPage";
 import { academyContent } from "./content/generatedContent";
 import { useLocalState } from "./lib/useLocalState";
 
-type View = "Dashboard" | "Learning Path" | "Knowledge Library" | "Frameworks" | "Conversations" | "Practice" | "Progress";
+type View = "Dashboard" | "Learning Path" | "If This Then That" | "Common Mistakes" | "What Great AEs Notice" | "Exit Gates" | "Manager Coaching Questions" | "Knowledge Library" | "Progress";
 
 export function App() {
   const [activeView, setActiveView] = useLocalState<View>("md7-active-view", "Dashboard");
@@ -89,8 +93,24 @@ export function App() {
       );
     }
 
-    if (activeView === "Practice") {
-      return <PracticePanel />;
+    if (activeView === "If This Then That") {
+      return <IfThisThenThatPage onOpenChapter={openChapter} />;
+    }
+
+    if (activeView === "Common Mistakes") {
+      return <CommonMistakesPage onOpenChapter={openChapter} />;
+    }
+
+    if (activeView === "What Great AEs Notice") {
+      return <WhatGreatAEsNoticePage onOpenChapter={openChapter} />;
+    }
+
+    if (activeView === "Exit Gates") {
+      return <ExitGatesPage onOpenChapter={openChapter} />;
+    }
+
+    if (activeView === "Manager Coaching Questions") {
+      return <ManagerCoachingQuestionsPage onOpenChapter={openChapter} />;
     }
 
     if (activeView === "Progress") {

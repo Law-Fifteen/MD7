@@ -1,25 +1,25 @@
 import {
+  AlertTriangle,
   BookOpen,
-  Brain,
   CheckCircle2,
   Compass,
-  Library,
+  Eye,
   Menu,
   MessageSquareText,
   Search,
-  Sparkles,
+  Target,
 } from "lucide-react";
 import type { ReactNode } from "react";
 import { navItems } from "../content/platform";
 
-const icons = {
+const icons: Record<string, typeof Compass> = {
   Dashboard: Compass,
   "Learning Path": BookOpen,
-  "Knowledge Library": Library,
-  Frameworks: Brain,
-  Conversations: MessageSquareText,
-  Practice: Sparkles,
-  Progress: CheckCircle2,
+  "If This Then That": Target,
+  "Common Mistakes": AlertTriangle,
+  "What Great AEs Notice": Eye,
+  "Exit Gates": CheckCircle2,
+  "Manager Coaching Questions": MessageSquareText,
 };
 
 type AppShellProps = {

@@ -1,7 +1,7 @@
 import { Bookmark, CheckCircle2, ChevronLeft, ChevronRight, MessageSquareText } from "lucide-react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import type { Chapter } from "../types";
 import { GlassPanel } from "./GlassPanel";
-import { ProgressBar } from "./ProgressBar";
 
 type ChapterReaderProps = {
   chapter: Chapter;
@@ -24,12 +24,47 @@ export function ChapterReader({
   onNext,
   onPrevious,
 }: ChapterReaderProps) {
-  const visibleSections = chapter.sections.filter((section) => section.items.length > 0).slice(0, 8);
+  const visibleSections = chapter.sections.filter((section) => section.items.length > 0);
+  const [activeIndex, setActiveIndex] = useState(0);
+  const scrollRef = useRef<HTMLDivElement>(null);
+  const sectionRefs = useRef<(HTMLElement | null)[]>([]);
+
+  useEffect(() => {
+    setActiveIndex(0);
+  }, [chapter.id]);
+
+  const scrollToIndex = useCallback((index: number) => {
+    setActiveIndex(index);
+    const el = sectionRefs.current[index];
+    if (el) {
+      el.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
+  }, []);
+
+  const handleScroll = useCallback(() => {
+    const container = scrollRef.current;
+    if (!container) return;
+    const scrollLeft = container.scrollLeft;
+    const containerWidth = container.offsetWidth;
+    const center = scrollLeft + containerWidth / 2;
+    let closest = 0;
+    let minDist = Infinity;
+    sectionRefs.current.forEach((el, i) => {
+      if (!el) return;
+      const elCenter = el.offsetLeft + el.offsetWidth / 2;
+      const dist = Math.abs(center - elCenter);
+      if (dist < minDist) {
+        minDist = dist;
+        closest = i;
+      }
+    });
+    setActiveIndex(closest);
+  }, []);
 
   return (
     <div className="grid gap-6 xl:grid-cols-[0.72fr_0.28fr]">
       <GlassPanel className="p-6 sm:p-8">
-        <div className="mb-8 flex flex-wrap items-start justify-between gap-4">
+        <div className="mb-6 flex flex-wrap items-start justify-between gap-4">
           <div>
             <p className="text-xs uppercase tracking-[0.28em] text-teal">Chapter {chapter.number}</p>
             <h2 className="mt-3 max-w-3xl text-3xl font-semibold leading-tight sm:text-4xl">{chapter.title}</h2>
@@ -40,20 +75,50 @@ export function ChapterReader({
           </button>
         </div>
 
-        <div className="mb-8">
-          <ProgressBar value={progress} label="Reading progress" />
+        <div className="mb-6">
+          <div className="relative h-1.5 w-full overflow-hidden rounded-full bg-white/10">
+            <div className="absolute inset-y-0 left-0 rounded-full bg-teal transition-all duration-500" style={{ width: `${progress}%` }} />
+          </div>
+        </div>
+
+        <div
+          ref={scrollRef}
+          onScroll={handleScroll}
+          className="mb-8 flex gap-2 overflow-x-auto pb-2 scrollbar-none"
+          style={{ scrollbarWidth: "none" }}
+        >
+          {visibleSections.map((section, i) => (
+            <button
+              key={section.title}
+              ref={(el) => { sectionRefs.current[i] = el; }}
+              onClick={() => scrollToIndex(i)}
+              className={`shrink-0 rounded-full px-4 py-2 text-xs font-medium transition ${
+                activeIndex === i
+                  ? "bg-[#ff671f] text-white"
+                  : "border border-white/15 text-white/50 hover:bg-white/10 hover:text-white"
+              }`}
+            >
+              {section.title}
+            </button>
+          ))}
         </div>
 
         <div className="space-y-7">
-          {visibleSections.map((section) => (
-            <article key={section.title} className="rounded-3xl border border-white/10 bg-white/[0.06] p-5 sm:p-6">
-              <h3 className="text-xl font-semibold">{section.title}</h3>
-              <div className="mt-4 space-y-3 text-base leading-8 text-white/72">
-                {section.items.slice(0, 8).map((item, index) => (
-                  <p key={`${section.title}-${index}`}>{item}</p>
-                ))}
-              </div>
-            </article>
+          {visibleSections.map((section, i) => (
+            <div
+              key={section.title}
+              ref={(el) => { sectionRefs.current[i] = el; }}
+              className="scroll-mt-24"
+            >
+              <article className="rounded-3xl border border-white/10 bg-white/[0.06] p-5 sm:p-6">
+                <h3 className="text-xl font-semibold">{section.title}</h3>
+                <div className="mt-4 space-y-3 text-base leading-8 text-white/72">
+                  {section.items.map((item, index) => (
+                    <p key={`${section.title}-${index}`}>{item}</p>
+                  ))}
+                </div>
+              </article>
+            </div>
           ))}
         </div>
 

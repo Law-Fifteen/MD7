@@ -25,6 +25,7 @@ export type Chapter = {
   greatAeSignals: string[];
   commonMistakes: string[];
   coachingQuestions: string[];
+  ifThisThenThat?: Array<{ if: string; theyMean: string; then: string }>;
 };
 
 export type KnowledgeObject = {
