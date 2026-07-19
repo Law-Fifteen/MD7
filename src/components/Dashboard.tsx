@@ -1,4 +1,4 @@
-import { ArrowRight, BookOpen, Clock, Target, TrendingUp } from "lucide-react";
+import { ArrowRight, BookOpen, Clock, TrendingUp } from "lucide-react";
 import type { ElementType } from "react";
 import { useEffect, useRef, useState } from "react";
 import { academyContent } from "../content/generatedContent";
@@ -52,7 +52,6 @@ function shufflePick<T>(arr: T[], count: number): T[] {
 }
 
 export function Dashboard({ currentChapter, completedCount, onContinue }: DashboardProps) {
-  const progress = Math.round((completedCount / academyContent.chapters.length) * 100);
   const videoRef = useRef<HTMLVideoElement>(null);
   const [insights, setInsights] = useState<InsightCard[]>(() => shufflePick(buildInsightPool(), 9));
 
@@ -87,60 +86,39 @@ export function Dashboard({ currentChapter, completedCount, onContinue }: Dashbo
 
   return (
     <div className="space-y-6">
-      <div className="grid gap-6 xl:grid-cols-[1.35fr_0.65fr]">
-        <GlassPanel className="overflow-hidden">
-          <div className="relative min-h-[420px] p-6 sm:p-8">
-            <video
-              ref={videoRef}
-              className="absolute inset-0 h-full w-full object-cover opacity-18"
-              src="./Resources/MD7 Logo Flair.mp4"
-              autoPlay
-              muted
-              playsInline
-            />
-            <div className="absolute inset-0 bg-gradient-to-r from-academy via-academy/88 to-academy/45" />
-            <div className="relative max-w-3xl">
-              <div className="mb-8 inline-flex items-center gap-2 rounded-full border border-teal/30 bg-teal/10 px-4 py-2 text-xs uppercase tracking-[0.22em] text-teal">
-                <Target className="h-4 w-4" />
-                Judgment over memorization
-              </div>
-              <h2 className="max-w-2xl text-4xl font-semibold leading-tight sm:text-5xl">
-                A commercial operating system for better property-owner decisions.
-              </h2>
-              <p className="mt-5 max-w-2xl text-base leading-8 text-white/70">
-                The academy turns the MD7 Sales Framework into connected learning: chapters,
-                decision exercises, frameworks, coaching prompts, and searchable field guidance.
-              </p>
-              <div className="mt-9 grid gap-4 sm:grid-cols-3">
-                <Metric icon={BookOpen} label="Chapters" value={academyContent.stats.chapterCount.toString()} />
-                <Metric icon={TrendingUp} label="Knowledge Objects" value={academyContent.stats.knowledgeObjectCount.toString()} />
-                <Metric icon={Clock} label="Current Focus" value={`Ch. ${currentChapter.number}`} />
-              </div>
-              <button
-                onClick={onContinue}
-                className="mt-9 inline-flex items-center gap-2 rounded-2xl bg-white px-5 py-3 text-sm font-semibold text-academy transition hover:-translate-y-0.5 hover:shadow-lift"
-              >
-                Continue Learning <ArrowRight className="h-4 w-4" />
-              </button>
+      <GlassPanel className="overflow-hidden">
+        <div className="relative min-h-[420px] p-6 sm:p-8">
+          <video
+            ref={videoRef}
+            className="absolute inset-0 h-full w-full object-cover opacity-18"
+            src="./Resources/MD7 Logo Flair.mp4"
+            autoPlay
+            muted
+            playsInline
+          />
+          <div className="absolute inset-0 bg-gradient-to-r from-academy via-academy/88 to-academy/45" />
+          <div className="relative max-w-3xl">
+            <h2 className="max-w-2xl text-4xl font-semibold leading-tight sm:text-5xl">
+              A commercial operating system for better property-owner decisions.
+            </h2>
+            <p className="mt-5 max-w-2xl text-base leading-8 text-white/70">
+              This academy is designed to improve your decision making ability, improving
+              judgement and offering a searchable Field Guide.
+            </p>
+            <div className="mt-9 grid gap-4 sm:grid-cols-3">
+              <Metric icon={BookOpen} label="Chapters" value={academyContent.stats.chapterCount.toString()} />
+              <Metric icon={TrendingUp} label="Knowledge Objects" value={academyContent.stats.knowledgeObjectCount.toString()} />
+              <Metric icon={Clock} label="Current Focus" value={`Ch. ${currentChapter.number}`} />
             </div>
+            <button
+              onClick={onContinue}
+              className="mt-9 inline-flex items-center gap-2 rounded-2xl bg-white px-5 py-3 text-sm font-semibold text-academy transition hover:-translate-y-0.5 hover:shadow-lift"
+            >
+              Continue Learning <ArrowRight className="h-4 w-4" />
+            </button>
           </div>
-        </GlassPanel>
-
-        <GlassPanel className="p-6">
-          <div className="mb-5 flex items-center justify-between">
-            <div>
-              <p className="text-xs uppercase tracking-[0.22em] text-white/45">Overall Progress</p>
-              <h3 className="mt-1 text-2xl font-semibold">{progress}% complete</h3>
-            </div>
-            <div className="rounded-2xl bg-teal/15 p-3 text-teal">
-              <TrendingUp className="h-6 w-6" />
-            </div>
-          </div>
-          <p className="mt-4 text-sm leading-6 text-white/62">
-            Completion is earned through reading, practice, reflection, and coaching questions.
-          </p>
-        </GlassPanel>
-      </div>
+        </div>
+      </GlassPanel>
 
       <div>
         <p className="text-xs uppercase tracking-[0.28em] text-white/45 mb-4">Insights</p>

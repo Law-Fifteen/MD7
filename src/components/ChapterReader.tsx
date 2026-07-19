@@ -1,5 +1,5 @@
 import { Bookmark, CheckCircle2, ChevronLeft, ChevronRight, MessageSquareText } from "lucide-react";
-import { useCallback, useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import type { Chapter } from "../types";
 import { GlassPanel } from "./GlassPanel";
 
@@ -14,6 +14,8 @@ type ChapterReaderProps = {
   onPrevious: () => void;
 };
 
+const COUNTDOWN_SECONDS = 5;
+
 export function ChapterReader({
   chapter,
   progress,
@@ -25,41 +27,41 @@ export function ChapterReader({
   onPrevious,
 }: ChapterReaderProps) {
   const visibleSections = chapter.sections.filter((section) => section.items.length > 0);
-  const [activeIndex, setActiveIndex] = useState(0);
-  const scrollRef = useRef<HTMLDivElement>(null);
-  const sectionRefs = useRef<(HTMLElement | null)[]>([]);
+  const [moduleIndex, setModuleIndex] = useState(0);
+  const [countdown, setCountdown] = useState(COUNTDOWN_SECONDS);
 
   useEffect(() => {
-    setActiveIndex(0);
+    setModuleIndex(0);
+    setCountdown(COUNTDOWN_SECONDS);
   }, [chapter.id]);
 
-  const scrollToIndex = useCallback((index: number) => {
-    setActiveIndex(index);
-    const el = sectionRefs.current[index];
-    if (el) {
-      el.scrollIntoView({ behavior: "smooth", block: "start" });
-    }
-  }, []);
+  useEffect(() => {
+    if (moduleIndex >= visibleSections.length - 1) return;
+    setCountdown(COUNTDOWN_SECONDS);
+    const timer = setInterval(() => {
+      setCountdown((prev) => {
+        if (prev <= 1) {
+          clearInterval(timer);
+          return 0;
+        }
+        return prev - 1;
+      });
+    }, 1000);
+    return () => clearInterval(timer);
+  }, [moduleIndex, visibleSections.length]);
 
-  const handleScroll = useCallback(() => {
-    const container = scrollRef.current;
-    if (!container) return;
-    const scrollLeft = container.scrollLeft;
-    const containerWidth = container.offsetWidth;
-    const center = scrollLeft + containerWidth / 2;
-    let closest = 0;
-    let minDist = Infinity;
-    sectionRefs.current.forEach((el, i) => {
-      if (!el) return;
-      const elCenter = el.offsetLeft + el.offsetWidth / 2;
-      const dist = Math.abs(center - elCenter);
-      if (dist < minDist) {
-        minDist = dist;
-        closest = i;
-      }
-    });
-    setActiveIndex(closest);
-  }, []);
+  const currentSection = visibleSections[moduleIndex];
+  const isFirst = moduleIndex === 0;
+  const isLast = moduleIndex >= visibleSections.length - 1;
+  const canProceed = countdown === 0 || isLast;
+
+  const goNext = () => {
+    if (isLast) {
+      onNext();
+    } else {
+      setModuleIndex((prev) => prev + 1);
+    }
+  };
 
   return (
     <div className="grid gap-6 xl:grid-cols-[0.72fr_0.28fr]">
@@ -81,21 +83,17 @@ export function ChapterReader({
           </div>
         </div>
 
-        <div
-          ref={scrollRef}
-          onScroll={handleScroll}
-          className="mb-8 flex gap-2 overflow-x-auto pb-2 scrollbar-none"
-          style={{ scrollbarWidth: "none" }}
-        >
+        <div className="mb-8 flex flex-wrap gap-2">
           {visibleSections.map((section, i) => (
             <button
               key={section.title}
-              ref={(el) => { sectionRefs.current[i] = el; }}
-              onClick={() => scrollToIndex(i)}
+              onClick={() => { setModuleIndex(i); setCountdown(COUNTDOWN_SECONDS); }}
               className={`shrink-0 rounded-full px-4 py-2 text-xs font-medium transition ${
-                activeIndex === i
+                i === moduleIndex
                   ? "bg-[#ff671f] text-white"
-                  : "border border-white/15 text-white/50 hover:bg-white/10 hover:text-white"
+                  : i < moduleIndex
+                    ? "bg-teal/20 text-teal border border-teal/30"
+                    : "border border-white/15 text-white/50 hover:bg-white/10 hover:text-white"
               }`}
             >
               {section.title}
@@ -103,37 +101,48 @@ export function ChapterReader({
           ))}
         </div>
 
-        <div className="space-y-7">
-          {visibleSections.map((section, i) => (
-            <div
-              key={section.title}
-              ref={(el) => { sectionRefs.current[i] = el; }}
-              className="scroll-mt-24"
-            >
-              <article className="rounded-3xl border border-white/10 bg-white/[0.06] p-5 sm:p-6">
-                <h3 className="text-xl font-semibold">{section.title}</h3>
-                <div className="mt-4 space-y-3 text-base leading-8 text-white/72">
-                  {section.items.map((item, index) => (
-                    <p key={`${section.title}-${index}`}>{item}</p>
-                  ))}
-                </div>
-              </article>
+        {currentSection && (
+          <article className="rounded-3xl border border-white/10 bg-white/[0.06] p-5 sm:p-6">
+            <h3 className="text-xl font-semibold">{currentSection.title}</h3>
+            <div className="mt-4 space-y-3 text-base leading-8 text-white/72">
+              {currentSection.items.map((item, index) => (
+                <p key={`${currentSection.title}-${index}`}>{item}</p>
+              ))}
             </div>
-          ))}
-        </div>
+          </article>
+        )}
 
-        <div className="mt-8 grid gap-4 md:grid-cols-2">
+        <div className="mt-8 grid gap-4 md:grid-cols-[auto_1fr]">
           <button
-            onClick={onPrevious}
-            className="inline-flex items-center justify-center gap-2 rounded-2xl border border-white/15 px-5 py-3 text-sm text-white/72 transition hover:bg-white/10 hover:text-white"
+            onClick={() => { setModuleIndex((prev) => Math.max(0, prev - 1)); setCountdown(COUNTDOWN_SECONDS); }}
+            disabled={isFirst}
+            className={`inline-flex items-center justify-center gap-2 rounded-2xl border px-5 py-3 text-sm transition ${
+              isFirst
+                ? "border-white/8 text-white/30 cursor-not-allowed"
+                : "border-white/15 text-white/72 hover:bg-white/10 hover:text-white"
+            }`}
           >
             <ChevronLeft className="h-4 w-4" /> Previous
           </button>
           <button
-            onClick={onNext}
-            className="inline-flex items-center justify-center gap-2 rounded-2xl bg-white px-5 py-3 text-sm font-semibold text-academy transition hover:-translate-y-0.5 hover:shadow-lift"
+            onClick={goNext}
+            disabled={!canProceed}
+            className={`relative inline-flex items-center justify-center gap-2 overflow-hidden rounded-2xl px-5 py-3 text-sm font-semibold transition ${
+              canProceed
+                ? "bg-white text-academy hover:-translate-y-0.5 hover:shadow-lift"
+                : "bg-white/15 text-white/40 cursor-not-allowed"
+            }`}
           >
-            Next Chapter <ChevronRight className="h-4 w-4" />
+            {!canProceed && (
+              <span
+                className="absolute inset-y-0 left-0 bg-white/20 transition-all duration-1000"
+                style={{ width: `${((COUNTDOWN_SECONDS - countdown) / COUNTDOWN_SECONDS) * 100}%` }}
+              />
+            )}
+            <span className="relative flex items-center gap-2">
+              {!canProceed && <span className="tabular-nums">{countdown}s</span>}
+              {isLast ? "Next Chapter" : "Next Module"} <ChevronRight className="h-4 w-4" />
+            </span>
           </button>
         </div>
       </GlassPanel>
