@@ -3,6 +3,7 @@ import { AppShell } from "./components/AppShell";
 import { ChapterReader } from "./components/ChapterReader";
 import { Dashboard } from "./components/Dashboard";
 import { KnowledgeLibrary } from "./components/KnowledgeLibrary";
+import { Login } from "./components/Login";
 import { ProgressView } from "./components/ProgressView";
 import { SearchOverlay } from "./components/SearchOverlay";
 import { Splash } from "./components/Splash";
@@ -27,6 +28,7 @@ export function App() {
   const [searchOpen, setSearchOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState("");
   const [showSplash, setShowSplash] = useState(true);
+  const [loggedInUser, setLoggedInUser] = useLocalState<string | null>("md7-logged-in-user", null);
 
   const handleSplashComplete = useCallback(() => setShowSplash(false), []);
 
@@ -121,26 +123,33 @@ export function App() {
   return (
     <>
       {showSplash && <Splash onComplete={handleSplashComplete} />}
-      <AppShell activeView={activeView} onNavigate={(view) => {
-        if (view.startsWith("Chapter ")) {
-          const num = parseInt(view.replace("Chapter ", ""), 10);
-          const ch = academyContent.chapters.find((c) => c.number === num);
-          if (ch) {
-            openChapter(ch.id);
-            return;
-          }
-        }
-        setActiveView(view as View);
-      }} onSearch={() => setSearchOpen(true)}>
-        {renderView()}
-      </AppShell>
-      <SearchOverlay
-        open={searchOpen}
-        query={searchQuery}
-        onQueryChange={setSearchQuery}
-        onClose={() => setSearchOpen(false)}
-        onOpenChapter={openChapter}
-      />
+      {!showSplash && !loggedInUser && (
+        <Login onLogin={(user) => setLoggedInUser(user)} />
+      )}
+      {!showSplash && loggedInUser && (
+        <>
+          <AppShell activeView={activeView} onNavigate={(view) => {
+            if (view.startsWith("Chapter ")) {
+              const num = parseInt(view.replace("Chapter ", ""), 10);
+              const ch = academyContent.chapters.find((c) => c.number === num);
+              if (ch) {
+                openChapter(ch.id);
+                return;
+              }
+            }
+            setActiveView(view as View);
+          }} onSearch={() => setSearchOpen(true)}>
+            {renderView()}
+          </AppShell>
+          <SearchOverlay
+            open={searchOpen}
+            query={searchQuery}
+            onQueryChange={setSearchQuery}
+            onClose={() => setSearchOpen(false)}
+            onOpenChapter={openChapter}
+          />
+        </>
+      )}
     </>
   );
 }
