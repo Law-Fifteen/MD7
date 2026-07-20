@@ -30,7 +30,7 @@ function buildInsightPool(): InsightCard[] {
       pool.push({ category: "Common Mistakes", text: mist, chapterNumber: chapter.number, chapterTitle: chapter.title, color: "text-amber" });
     }
     for (const q of chapter.coachingQuestions.slice(0, 1)) {
-      pool.push({ category: "Manager Coaching", text: q, chapterNumber: chapter.number, chapterTitle: chapter.title, color: "text-white/60" });
+      pool.push({ category: "Personal Reflection", text: q, chapterNumber: chapter.number, chapterTitle: chapter.title, color: "text-white/60" });
     }
     const itt = ifThisThenThatData[chapter.id];
     if (itt) {

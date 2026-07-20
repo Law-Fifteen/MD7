@@ -10,7 +10,7 @@ export function ManagerCoachingQuestionsPage({ onOpenChapter }: Props) {
     <div className="space-y-6">
       <div>
         <p className="text-xs uppercase tracking-[0.28em] text-teal">Coaching</p>
-        <h2 className="mt-2 text-3xl font-semibold">Manager Coaching Questions</h2>
+        <h2 className="mt-2 text-3xl font-semibold">Personal Reflection</h2>
         <p className="mt-3 max-w-2xl text-base text-white/60">Questions that improve judgment, not just activity.</p>
       </div>
       <div className="space-y-8">

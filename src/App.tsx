@@ -14,7 +14,7 @@ import { ManagerCoachingQuestionsPage } from "./components/ManagerCoachingQuesti
 import { academyContent } from "./content/generatedContent";
 import { useLocalState } from "./lib/useLocalState";
 
-type View = "Dashboard" | "Learning Path" | "If This Then That" | "Common Mistakes" | "What Great AEs Notice" | "Exit Gates" | "Manager Coaching Questions" | "Knowledge Library" | "Progress";
+type View = "Dashboard" | "Learning Path" | "If This Then That" | "Common Mistakes" | "What Great AEs Notice" | "Exit Gates" | "Personal Reflection" | "Knowledge Library" | "Progress";
 
 export function App() {
   const [activeView, setActiveView] = useLocalState<View>("md7-active-view", "Dashboard");
@@ -109,7 +109,7 @@ export function App() {
       return <ExitGatesPage onOpenChapter={openChapter} />;
     }
 
-    if (activeView === "Manager Coaching Questions") {
+    if (activeView === "Personal Reflection") {
       return <ManagerCoachingQuestionsPage onOpenChapter={openChapter} />;
     }
 

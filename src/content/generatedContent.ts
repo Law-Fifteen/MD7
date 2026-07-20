@@ -215,13 +215,13 @@ export const academyContent: AcademyContent = {
           ]
         },
         {
-          "title": "Manager Coaching Questions",
+          "title": "Personal Reflection",
           "items": [
-            "Can the AE clearly explain the interests of all three stakeholders without bias?",
-            "Did the AE identify the customer's underlying motivation before discussing solutions?",
+            "Can I clearly explain the interests of all three stakeholders without bias?",
+            "Did I identify the customer's underlying motivation before discussing solutions?",
             "Is the proposed path (lease optimization or buyout) aligned with the customer's stated goals?",
-            "Did the AE educate before attempting to persuade?",
-            "Has the AE built trust, or simply delivered information?"
+            "Did I educate before attempting to persuade?",
+            "Have I built trust, or simply delivered information?"
           ]
         }
       ],
@@ -255,11 +255,11 @@ export const academyContent: AcademyContent = {
         "Focusing on what the carrier wants before understanding what the property owner values."
       ],
       "coachingQuestions": [
-        "Can the AE clearly explain the interests of all three stakeholders without bias?",
-        "Did the AE identify the customer's underlying motivation before discussing solutions?",
+        "Can I clearly explain the interests of all three stakeholders without bias?",
+        "Did I identify the customer's underlying motivation before discussing solutions?",
         "Is the proposed path (lease optimization or buyout) aligned with the customer's stated goals?",
-        "Did the AE educate before attempting to persuade?",
-        "Has the AE built trust, or simply delivered information?"
+        "Did I educate before attempting to persuade?",
+        "Have I built trust, or simply delivered information?"
       ]
     },
     {
@@ -445,13 +445,13 @@ export const academyContent: AcademyContent = {
           ]
         },
         {
-          "title": "Manager Coaching Questions",
+          "title": "Personal Reflection",
           "items": [
-            "Did the AE explain why carriers optimize portfolios in a way the customer could understand?",
-            "Did the AE connect network evolution to prudent financial planning rather than fear?",
-            "Can the AE articulate how the customer views the lease—as income, legacy, investment, or security?",
+            "Did I explain why carriers optimize portfolios in a way the customer could understand?",
+            "Did I connect network evolution to prudent financial planning rather than fear?",
+            "Can I articulate how the customer views the lease—as income, legacy, investment, or security?",
             "Did the conversation uncover how the customer defines value before introducing either path?",
-            "Did the AE leave the customer thinking differently about the asset than when the conversation began?",
+            "Did I leave the customer thinking differently about the asset than when the conversation began?",
             "This chapter intentionally lays out the psychological foundation for the rest of the playbook. Before an AE learns how to negotiate, they first need to understand how the other side interprets value."
           ]
         }
@@ -487,11 +487,11 @@ export const academyContent: AcademyContent = {
         "Confusing agreement with understanding—customers often nod politely before they've actually reframed their perspective."
       ],
       "coachingQuestions": [
-        "Did the AE explain why carriers optimize portfolios in a way the customer could understand?",
-        "Did the AE connect network evolution to prudent financial planning rather than fear?",
-        "Can the AE articulate how the customer views the lease—as income, legacy, investment, or security?",
+        "Did I explain why carriers optimize portfolios in a way the customer could understand?",
+        "Did I connect network evolution to prudent financial planning rather than fear?",
+        "Can I articulate how the customer views the lease—as income, legacy, investment, or security?",
         "Did the conversation uncover how the customer defines value before introducing either path?",
-        "Did the AE leave the customer thinking differently about the asset than when the conversation began?",
+        "Did I leave the customer thinking differently about the asset than when the conversation began?",
         "This chapter intentionally lays out the psychological foundation for the rest of the playbook. Before an AE learns how to negotiate, they first need to understand how the other side interprets value."
       ]
     },
@@ -786,13 +786,13 @@ export const academyContent: AcademyContent = {
           ]
         },
         {
-          "title": "Manager Coaching Questions",
+          "title": "Personal Reflection",
           "items": [
-            "Can the AE clearly describe the customer's primary motivation in one sentence?",
-            "Did the AE identify all likely stakeholders before moving the opportunity forward?",
+            "Can I clearly describe the customer's primary motivation in one sentence?",
+            "Did I identify all likely stakeholders before moving the opportunity forward?",
             "Is the proposed path aligned with the customer's life goals rather than the carrier's objectives?",
-            "Did the AE ask questions that encouraged storytelling rather than short answers?",
-            "If the customer said \"yes\" today, would the AE know why they said yes?"
+            "Did I ask questions that encouraged storytelling rather than short answers?",
+            "If the customer said \"yes\" today, would I know why they said yes?"
           ]
         }
       ],
@@ -828,11 +828,11 @@ export const academyContent: AcademyContent = {
         "Trying to persuade before understanding what success looks like for the customer."
       ],
       "coachingQuestions": [
-        "Can the AE clearly describe the customer's primary motivation in one sentence?",
-        "Did the AE identify all likely stakeholders before moving the opportunity forward?",
+        "Can I clearly describe the customer's primary motivation in one sentence?",
+        "Did I identify all likely stakeholders before moving the opportunity forward?",
         "Is the proposed path aligned with the customer's life goals rather than the carrier's objectives?",
-        "Did the AE ask questions that encouraged storytelling rather than short answers?",
-        "If the customer said \"yes\" today, would the AE know why they said yes?"
+        "Did I ask questions that encouraged storytelling rather than short answers?",
+        "If the customer said \"yes\" today, would I know why they said yes?"
       ]
     },
     {
@@ -1067,9 +1067,9 @@ export const academyContent: AcademyContent = {
           ]
         },
         {
-          "title": "Manager Coaching Questions",
+          "title": "Personal Reflection",
           "items": [
-            "Did the AE earn permission before introducing a new perspective?",
+            "Did I earn permission before introducing a new perspective?",
             "What single insight changed the customer's thinking?",
             "Did the customer ask more questions by the end of the conversation than at the beginning?",
             "Was the recommendation built from the customer's own goals or from the carrier's objectives?",
@@ -1109,7 +1109,7 @@ export const academyContent: AcademyContent = {
         "Treating silence as failure instead of reflection."
       ],
       "coachingQuestions": [
-        "Did the AE earn permission before introducing a new perspective?",
+        "Did I earn permission before introducing a new perspective?",
         "What single insight changed the customer's thinking?",
         "Did the customer ask more questions by the end of the conversation than at the beginning?",
         "Was the recommendation built from the customer's own goals or from the carrier's objectives?",
@@ -1384,9 +1384,9 @@ export const academyContent: AcademyContent = {
           ]
         },
         {
-          "title": "Manager Coaching Questions",
+          "title": "Personal Reflection",
           "items": [
-            "Did the AE earn trust before introducing new perspectives?",
+            "Did I earn trust before introducing new perspectives?",
             "What personal objective did the customer reveal?",
             "Did the recommendation logically emerge from discovery?",
             "What was the customer's biggest shift in thinking?",
@@ -1429,7 +1429,7 @@ export const academyContent: AcademyContent = {
         "Ending the conversation without a clearly defined next step."
       ],
       "coachingQuestions": [
-        "Did the AE earn trust before introducing new perspectives?",
+        "Did I earn trust before introducing new perspectives?",
         "What personal objective did the customer reveal?",
         "Did the recommendation logically emerge from discovery?",
         "What was the customer's biggest shift in thinking?",
@@ -1982,7 +1982,7 @@ export const academyContent: AcademyContent = {
           ]
         },
         {
-          "title": "Manager Coaching Questions",
+          "title": "Personal Reflection",
           "items": [
             "What customer decision was made that justifies moving this opportunity forward?",
             "What evidence supports the current forecast stage?",
@@ -2335,7 +2335,7 @@ export const academyContent: AcademyContent = {
           ]
         },
         {
-          "title": "Manager Coaching Questions",
+          "title": "Personal Reflection",
           "items": [
             "What personal story changed your understanding of the customer?",
             "What role does the lease play in their life today?",
@@ -2805,7 +2805,7 @@ export const academyContent: AcademyContent = {
           ]
         },
         {
-          "title": "Manager Coaching Questions",
+          "title": "Personal Reflection",
           "items": [
             "What is the customer's primary emotional driver?",
             "What evidence supports that conclusion?",
@@ -3146,12 +3146,12 @@ export const academyContent: AcademyContent = {
           ]
         },
         {
-          "title": "Manager Coaching Questions",
+          "title": "Personal Reflection",
           "items": [
-            "What assumption did the AE successfully challenge?",
+            "What assumption did I successfully challenge?",
             "Which commercial insight had the greatest impact?",
             "Did the customer reach the conclusion themselves, or was it handed to them?",
-            "How did the AE validate the customer's perspective before teaching?",
+            "How did I validate the customer's perspective before teaching?",
             "What evidence suggests the customer's thinking changed—not just their behavior?"
           ]
         }
@@ -3182,10 +3182,10 @@ export const academyContent: AcademyContent = {
         "Mistaking education for persuasion."
       ],
       "coachingQuestions": [
-        "What assumption did the AE successfully challenge?",
+        "What assumption did I successfully challenge?",
         "Which commercial insight had the greatest impact?",
         "Did the customer reach the conclusion themselves, or was it handed to them?",
-        "How did the AE validate the customer's perspective before teaching?",
+        "How did I validate the customer's perspective before teaching?",
         "What evidence suggests the customer's thinking changed—not just their behavior?"
       ]
     },
@@ -3589,12 +3589,12 @@ export const academyContent: AcademyContent = {
           ]
         },
         {
-          "title": "Manager Coaching Questions",
+          "title": "Personal Reflection",
           "items": [
             "What barrier is the customer actually trying to resolve?",
             "What evidence supports that conclusion?",
             "What emotional driver is being protected?",
-            "Did the AE diagnose before responding?",
+            "Did I diagnose before responding?",
             "Has the customer demonstrated renewed confidence, or merely stopped objecting?",
             "What customer commitment confirms the barrier has truly been removed?"
           ]
@@ -3631,7 +3631,7 @@ export const academyContent: AcademyContent = {
         "What barrier is the customer actually trying to resolve?",
         "What evidence supports that conclusion?",
         "What emotional driver is being protected?",
-        "Did the AE diagnose before responding?",
+        "Did I diagnose before responding?",
         "Has the customer demonstrated renewed confidence, or merely stopped objecting?",
         "What customer commitment confirms the barrier has truly been removed?"
       ]
@@ -3945,7 +3945,7 @@ export const academyContent: AcademyContent = {
           ]
         },
         {
-          "title": "Manager Coaching Questions",
+          "title": "Personal Reflection",
           "items": [
             "What is the customer negotiating besides price?",
             "Which layer of the Value Stack needs strengthening?",
@@ -4237,12 +4237,12 @@ export const academyContent: AcademyContent = {
           ]
         },
         {
-          "title": "Manager Coaching Questions",
+          "title": "Personal Reflection",
           "items": [
             "What is the customer's most recent measurable commitment?",
             "What evidence shows the customer is more invested today than during the last conversation?",
             "If this opportunity is healthy, what should the customer naturally do next?",
-            "Is the AE asking for the appropriate commitment based on the customer's current confidence level?",
+            "Am I asking for the appropriate commitment based on the customer's current confidence level?",
             "If the opportunity stalled today, where did momentum begin to slow?"
           ]
         }
@@ -4276,7 +4276,7 @@ export const academyContent: AcademyContent = {
         "What is the customer's most recent measurable commitment?",
         "What evidence shows the customer is more invested today than during the last conversation?",
         "If this opportunity is healthy, what should the customer naturally do next?",
-        "Is the AE asking for the appropriate commitment based on the customer's current confidence level?",
+        "Am I asking for the appropriate commitment based on the customer's current confidence level?",
         "If the opportunity stalled today, where did momentum begin to slow?"
       ]
     },
@@ -4595,12 +4595,12 @@ export const academyContent: AcademyContent = {
           ]
         },
         {
-          "title": "Manager Coaching Questions",
+          "title": "Personal Reflection",
           "items": [
             "At what point did the customer's emotional temperature change?",
             "What specific behavior indicated increasing confidence?",
             "Which story revealed the customer's dominant emotional driver?",
-            "Did the AE recognize the difference between curiosity and commitment?",
+            "Did I recognize the difference between curiosity and commitment?",
             "What moment represented the conversation's turning point?",
             "If you removed the transcript and watched only the interaction, what would you conclude about the customer's confidence?"
           ]
@@ -4637,7 +4637,7 @@ export const academyContent: AcademyContent = {
         "At what point did the customer's emotional temperature change?",
         "What specific behavior indicated increasing confidence?",
         "Which story revealed the customer's dominant emotional driver?",
-        "Did the AE recognize the difference between curiosity and commitment?",
+        "Did I recognize the difference between curiosity and commitment?",
         "What moment represented the conversation's turning point?",
         "If you removed the transcript and watched only the interaction, what would you conclude about the customer's confidence?"
       ]
@@ -4909,7 +4909,7 @@ export const academyContent: AcademyContent = {
           ]
         },
         {
-          "title": "Manager Coaching Questions",
+          "title": "Personal Reflection",
           "items": [
             "Why will this customer change now instead of six months from now?",
             "What evidence supports the current forecast stage?",
@@ -5215,10 +5215,10 @@ export const academyContent: AcademyContent = {
           ]
         },
         {
-          "title": "Manager Coaching Questions",
+          "title": "Personal Reflection",
           "items": [
             "What judgment improved this week?",
-            "Which principle from the playbook did the AE apply successfully?",
+            "Which principle from the playbook did I apply successfully?",
             "What assumption created the biggest challenge?",
             "How much manager involvement did this engagement require compared to similar engagements last month?",
             "If this AE became a manager tomorrow, what coaching behavior would they naturally model?",
@@ -5247,7 +5247,7 @@ export const academyContent: AcademyContent = {
       "commonMistakes": [],
       "coachingQuestions": [
         "What judgment improved this week?",
-        "Which principle from the playbook did the AE apply successfully?",
+        "Which principle from the playbook did I apply successfully?",
         "What assumption created the biggest challenge?",
         "How much manager involvement did this engagement require compared to similar engagements last month?",
         "If this AE became a manager tomorrow, what coaching behavior would they naturally model?",
@@ -5806,7 +5806,7 @@ export const academyContent: AcademyContent = {
     {
       "id": "chapter-1-md7-business-model-manager-coaching-questions",
       "type": "Framework",
-      "title": "Manager Coaching Questions",
+      "title": "Personal Reflection",
       "summary": "Can the AE clearly explain the interests of all three stakeholders without bias? Did the AE identify the customer's underlying motivation before discussing solutions?",
       "tags": [
         "Business",
@@ -6055,7 +6055,7 @@ export const academyContent: AcademyContent = {
     {
       "id": "chapter-2-the-economics-psychology-behind-telecom-leases-manager-coaching-questions",
       "type": "Framework",
-      "title": "Manager Coaching Questions",
+      "title": "Personal Reflection",
       "summary": "Did the AE explain why carriers optimize portfolios in a way the customer could understand? Did the AE connect network evolution to prudent financial planning rather than fear?",
       "tags": [
         "Economics",
@@ -6344,7 +6344,7 @@ export const academyContent: AcademyContent = {
     {
       "id": "chapter-3-understanding-the-property-owner-manager-coaching-questions",
       "type": "Framework",
-      "title": "Manager Coaching Questions",
+      "title": "Personal Reflection",
       "summary": "Can the AE clearly describe the customer's primary motivation in one sentence? Did the AE identify all likely stakeholders before moving the opportunity forward?",
       "tags": [
         "Property",
@@ -6630,7 +6630,7 @@ export const academyContent: AcademyContent = {
     {
       "id": "chapter-4-the-md7-challenger-mindset-manager-coaching-questions",
       "type": "Framework",
-      "title": "Manager Coaching Questions",
+      "title": "Personal Reflection",
       "summary": "Did the AE earn permission before introducing a new perspective? What single insight changed the customer's thinking?",
       "tags": [
         "Challenger",
@@ -6971,7 +6971,7 @@ export const academyContent: AcademyContent = {
     {
       "id": "chapter-5-the-anatomy-of-an-md7-conversation-manager-coaching-questions",
       "type": "Framework",
-      "title": "Manager Coaching Questions",
+      "title": "Personal Reflection",
       "summary": "Did the AE earn trust before introducing new perspectives? What personal objective did the customer reveal?",
       "tags": [
         "Anatomy",
@@ -7818,7 +7818,7 @@ export const academyContent: AcademyContent = {
     {
       "id": "chapter-7-the-md7-decision-framework-manager-coaching-questions",
       "type": "Framework",
-      "title": "Manager Coaching Questions",
+      "title": "Personal Reflection",
       "summary": "What customer decision was made that justifies moving this opportunity forward? What evidence supports the current forecast stage?",
       "tags": [
         "Decision",
@@ -8201,7 +8201,7 @@ export const academyContent: AcademyContent = {
     {
       "id": "chapter-8-mastering-discovery-conversations-manager-coaching-questions",
       "type": "Framework",
-      "title": "Manager Coaching Questions",
+      "title": "Personal Reflection",
       "summary": "What personal story changed your understanding of the customer? What role does the lease play in their life today?",
       "tags": [
         "Mastering",
@@ -8921,7 +8921,7 @@ export const academyContent: AcademyContent = {
     {
       "id": "chapter-9-the-emotional-driver-matrix-manager-coaching-questions",
       "type": "Framework",
-      "title": "Manager Coaching Questions",
+      "title": "Personal Reflection",
       "summary": "What is the customer's primary emotional driver? What evidence supports that conclusion?",
       "tags": [
         "Emotional",
@@ -9389,7 +9389,7 @@ export const academyContent: AcademyContent = {
     {
       "id": "chapter-10-challenger-conversation-frameworks-manager-coaching-questions",
       "type": "Framework",
-      "title": "Manager Coaching Questions",
+      "title": "Personal Reflection",
       "summary": "What assumption did the AE successfully challenge? Which commercial insight had the greatest impact?",
       "tags": [
         "Challenger",
@@ -9953,7 +9953,7 @@ export const academyContent: AcademyContent = {
     {
       "id": "chapter-11-navigating-decision-barriers-manager-coaching-questions",
       "type": "Framework",
-      "title": "Manager Coaching Questions",
+      "title": "Personal Reflection",
       "summary": "What barrier is the customer actually trying to resolve? What evidence supports that conclusion?",
       "tags": [
         "Navigating",
@@ -10349,7 +10349,7 @@ export const academyContent: AcademyContent = {
     {
       "id": "chapter-12-negotiation-value-creation-manager-coaching-questions",
       "type": "Framework",
-      "title": "Manager Coaching Questions",
+      "title": "Personal Reflection",
       "summary": "What is the customer negotiating besides price? Which layer of the Value Stack needs strengthening?",
       "tags": [
         "Negotiation",
@@ -10686,7 +10686,7 @@ export const academyContent: AcademyContent = {
     {
       "id": "chapter-13-gaining-commitment-creating-momentum-manager-coaching-questions",
       "type": "Framework",
-      "title": "Manager Coaching Questions",
+      "title": "Personal Reflection",
       "summary": "What is the customer's most recent measurable commitment? What evidence shows the customer is more invested today than during the last conversation?",
       "tags": [
         "Gaining",
@@ -11051,7 +11051,7 @@ export const academyContent: AcademyContent = {
     {
       "id": "chapter-14-reading-the-conversation-manager-coaching-questions",
       "type": "Framework",
-      "title": "Manager Coaching Questions",
+      "title": "Personal Reflection",
       "summary": "At what point did the customer's emotional temperature change? What specific behavior indicated increasing confidence?",
       "tags": [
         "Reading",
@@ -11302,7 +11302,7 @@ export const academyContent: AcademyContent = {
     {
       "id": "chapter-15-strategic-engagement-planning-manager-coaching-questions",
       "type": "Framework",
-      "title": "Manager Coaching Questions",
+      "title": "Personal Reflection",
       "summary": "Why will this customer change now instead of six months from now? What evidence supports the current forecast stage?",
       "tags": [
         "Strategic",
@@ -11554,7 +11554,7 @@ export const academyContent: AcademyContent = {
     {
       "id": "chapter-16-coaching-the-md7-way-manager-coaching-questions",
       "type": "Framework",
-      "title": "Manager Coaching Questions",
+      "title": "Personal Reflection",
       "summary": "What judgment improved this week? Which principle from the playbook did the AE apply successfully?",
       "tags": [
         "Coaching"

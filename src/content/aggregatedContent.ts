@@ -1024,13 +1024,13 @@ export const allCommonMistakes: ContentItem[] = [
 export const allCoachingQuestions: ContentItem[] = [
   // Chapter 1
   {
-    text: "Can the AE clearly explain the interests of all three stakeholders without bias?",
+    text: "Can I clearly explain the interests of all three stakeholders without bias?",
     chapterId: "chapter-1-md7-business-model",
     chapterNumber: 1,
     chapterTitle: "MD7 Business Model",
   },
   {
-    text: "Did the AE identify the customer's underlying motivation before discussing solutions?",
+    text: "Did I identify the customer's underlying motivation before discussing solutions?",
     chapterId: "chapter-1-md7-business-model",
     chapterNumber: 1,
     chapterTitle: "MD7 Business Model",
@@ -1042,32 +1042,32 @@ export const allCoachingQuestions: ContentItem[] = [
     chapterTitle: "MD7 Business Model",
   },
   {
-    text: "Did the AE educate before attempting to persuade?",
+    text: "Did I educate before attempting to persuade?",
     chapterId: "chapter-1-md7-business-model",
     chapterNumber: 1,
     chapterTitle: "MD7 Business Model",
   },
   {
-    text: "Has the AE built trust, or simply delivered information?",
+    text: "Have I built trust, or simply delivered information?",
     chapterId: "chapter-1-md7-business-model",
     chapterNumber: 1,
     chapterTitle: "MD7 Business Model",
   },
   // Chapter 2
   {
-    text: "Did the AE explain why carriers optimize portfolios in a way the customer could understand?",
+    text: "Did I explain why carriers optimize portfolios in a way the customer could understand?",
     chapterId: "chapter-2-the-economics-psychology-behind-telecom-leases",
     chapterNumber: 2,
     chapterTitle: "The Economics & Psychology Behind Telecom Leases",
   },
   {
-    text: "Did the AE connect network evolution to prudent financial planning rather than fear?",
+    text: "Did I connect network evolution to prudent financial planning rather than fear?",
     chapterId: "chapter-2-the-economics-psychology-behind-telecom-leases",
     chapterNumber: 2,
     chapterTitle: "The Economics & Psychology Behind Telecom Leases",
   },
   {
-    text: "Can the AE articulate how the customer views the lease—as income, legacy, investment, or security?",
+    text: "Can I articulate how the customer views the lease—as income, legacy, investment, or security?",
     chapterId: "chapter-2-the-economics-psychology-behind-telecom-leases",
     chapterNumber: 2,
     chapterTitle: "The Economics & Psychology Behind Telecom Leases",
@@ -1079,7 +1079,7 @@ export const allCoachingQuestions: ContentItem[] = [
     chapterTitle: "The Economics & Psychology Behind Telecom Leases",
   },
   {
-    text: "Did the AE leave the customer thinking differently about the asset than when the conversation began?",
+    text: "Did I leave the customer thinking differently about the asset than when the conversation began?",
     chapterId: "chapter-2-the-economics-psychology-behind-telecom-leases",
     chapterNumber: 2,
     chapterTitle: "The Economics & Psychology Behind Telecom Leases",
@@ -1092,13 +1092,13 @@ export const allCoachingQuestions: ContentItem[] = [
   },
   // Chapter 3
   {
-    text: "Can the AE clearly describe the customer's primary motivation in one sentence?",
+    text: "Can I clearly describe the customer's primary motivation in one sentence?",
     chapterId: "chapter-3-understanding-the-property-owner",
     chapterNumber: 3,
     chapterTitle: "Understanding the Property Owner",
   },
   {
-    text: "Did the AE identify all likely stakeholders before moving the opportunity forward?",
+    text: "Did I identify all likely stakeholders before moving the opportunity forward?",
     chapterId: "chapter-3-understanding-the-property-owner",
     chapterNumber: 3,
     chapterTitle: "Understanding the Property Owner",
@@ -1110,20 +1110,20 @@ export const allCoachingQuestions: ContentItem[] = [
     chapterTitle: "Understanding the Property Owner",
   },
   {
-    text: "Did the AE ask questions that encouraged storytelling rather than short answers?",
+    text: "Did I ask questions that encouraged storytelling rather than short answers?",
     chapterId: "chapter-3-understanding-the-property-owner",
     chapterNumber: 3,
     chapterTitle: "Understanding the Property Owner",
   },
   {
-    text: "If the customer said \"yes\" today, would the AE know why they said yes?",
+    text: "If the customer said \"yes\" today, would I know why they said yes?",
     chapterId: "chapter-3-understanding-the-property-owner",
     chapterNumber: 3,
     chapterTitle: "Understanding the Property Owner",
   },
   // Chapter 4
   {
-    text: "Did the AE earn permission before introducing a new perspective?",
+    text: "Did I earn permission before introducing a new perspective?",
     chapterId: "chapter-4-the-md7-challenger-mindset",
     chapterNumber: 4,
     chapterTitle: "The MD7 Challenger Mindset",
@@ -1154,7 +1154,7 @@ export const allCoachingQuestions: ContentItem[] = [
   },
   // Chapter 5
   {
-    text: "Did the AE earn trust before introducing new perspectives?",
+    text: "Did I earn trust before introducing new perspectives?",
     chapterId: "chapter-5-the-anatomy-of-an-md7-conversation",
     chapterNumber: 5,
     chapterTitle: "The Anatomy of an MD7 Conversation",
@@ -1290,7 +1290,7 @@ export const allCoachingQuestions: ContentItem[] = [
   },
   // Chapter 10
   {
-    text: "What assumption did the AE successfully challenge?",
+    text: "What assumption did I successfully challenge?",
     chapterId: "chapter-10-challenger-conversation-frameworks",
     chapterNumber: 10,
     chapterTitle: "Challenger Conversation Frameworks",
@@ -1308,7 +1308,7 @@ export const allCoachingQuestions: ContentItem[] = [
     chapterTitle: "Challenger Conversation Frameworks",
   },
   {
-    text: "How did the AE validate the customer's perspective before teaching?",
+    text: "How did I validate the customer's perspective before teaching?",
     chapterId: "chapter-10-challenger-conversation-frameworks",
     chapterNumber: 10,
     chapterTitle: "Challenger Conversation Frameworks",
@@ -1339,7 +1339,7 @@ export const allCoachingQuestions: ContentItem[] = [
     chapterTitle: "Navigating Decision Barriers",
   },
   {
-    text: "Did the AE diagnose before responding?",
+    text: "Did I diagnose before responding?",
     chapterId: "chapter-11-navigating-decision-barriers",
     chapterNumber: 11,
     chapterTitle: "Navigating Decision Barriers",
@@ -1413,7 +1413,7 @@ export const allCoachingQuestions: ContentItem[] = [
     chapterTitle: "Gaining Commitment & Creating Momentum",
   },
   {
-    text: "Is the AE asking for the appropriate commitment based on the customer's current confidence level?",
+    text: "Am I asking for the appropriate commitment based on the customer's current confidence level?",
     chapterId: "chapter-13-gaining-commitment-creating-momentum",
     chapterNumber: 13,
     chapterTitle: "Gaining Commitment & Creating Momentum",
@@ -1444,7 +1444,7 @@ export const allCoachingQuestions: ContentItem[] = [
     chapterTitle: "Reading the Conversation",
   },
   {
-    text: "Did the AE recognize the difference between curiosity and commitment?",
+    text: "Did I recognize the difference between curiosity and commitment?",
     chapterId: "chapter-14-reading-the-conversation",
     chapterNumber: 14,
     chapterTitle: "Reading the Conversation",
@@ -1506,7 +1506,7 @@ export const allCoachingQuestions: ContentItem[] = [
     chapterTitle: "Coaching the MD7 Way",
   },
   {
-    text: "Which principle from the playbook did the AE apply successfully?",
+    text: "Which principle from the playbook did I apply successfully?",
     chapterId: "chapter-16-coaching-the-md7-way",
     chapterNumber: 16,
     chapterTitle: "Coaching the MD7 Way",

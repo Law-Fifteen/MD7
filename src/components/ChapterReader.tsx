@@ -172,7 +172,7 @@ export function ChapterReader({
         </GlassPanel>
 
         <GlassPanel className="p-6">
-          <p className="text-xs uppercase tracking-[0.22em] text-white/45">Manager Coaching</p>
+          <p className="text-xs uppercase tracking-[0.22em] text-white/45">Personal Reflection</p>
           <div className="mt-4 space-y-3 text-sm leading-6 text-white/70">
             {chapter.coachingQuestions.slice(0, 4).map((question) => (
               <p key={question}>{question}</p>

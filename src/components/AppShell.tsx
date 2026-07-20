@@ -21,7 +21,7 @@ const icons: Record<string, typeof Compass> = {
   "Common Mistakes": AlertTriangle,
   "What Great AEs Notice": Eye,
   "Exit Gates": CheckCircle2,
-  "Manager Coaching Questions": MessageSquareText,
+  "Personal Reflection": MessageSquareText,
 };
 
 type AppShellProps = {

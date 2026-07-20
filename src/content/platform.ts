@@ -5,5 +5,5 @@ export const navItems = [
   "Common Mistakes",
   "What Great AEs Notice",
   "Exit Gates",
-  "Manager Coaching Questions",
+  "Personal Reflection",
 ] as const;
