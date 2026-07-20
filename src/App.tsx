@@ -121,7 +121,17 @@ export function App() {
   return (
     <>
       {showSplash && <Splash onComplete={handleSplashComplete} />}
-      <AppShell activeView={activeView} onNavigate={(view) => setActiveView(view as View)} onSearch={() => setSearchOpen(true)}>
+      <AppShell activeView={activeView} onNavigate={(view) => {
+        if (view.startsWith("Chapter ")) {
+          const num = parseInt(view.replace("Chapter ", ""), 10);
+          const ch = academyContent.chapters.find((c) => c.number === num);
+          if (ch) {
+            openChapter(ch.id);
+            return;
+          }
+        }
+        setActiveView(view as View);
+      }} onSearch={() => setSearchOpen(true)}>
         {renderView()}
       </AppShell>
       <SearchOverlay

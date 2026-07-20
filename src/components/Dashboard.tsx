@@ -1,15 +1,56 @@
 import { ArrowRight } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
 import { academyContent } from "../content/generatedContent";
+import { ifThisThenThatData } from "../content/ifThisThenThat";
 import { GlassPanel } from "./GlassPanel";
 
 type DashboardProps = {
   onContinue: () => void;
 };
 
+type InsightCard = {
+  category: string;
+  text: string;
+  chapterNumber: number;
+  chapterTitle: string;
+  color: string;
+};
+
+function buildInsightPool(): InsightCard[] {
+  const pool: InsightCard[] = [];
+  for (const chapter of academyContent.chapters) {
+    for (const sig of chapter.greatAeSignals.slice(0, 2)) {
+      pool.push({ category: "What Great AEs Notice", text: sig, chapterNumber: chapter.number, chapterTitle: chapter.title, color: "text-teal" });
+    }
+    for (const mist of chapter.commonMistakes.slice(0, 2)) {
+      pool.push({ category: "Common Mistakes", text: mist, chapterNumber: chapter.number, chapterTitle: chapter.title, color: "text-amber" });
+    }
+    for (const q of chapter.coachingQuestions.slice(0, 1)) {
+      pool.push({ category: "Personal Reflection", text: q, chapterNumber: chapter.number, chapterTitle: chapter.title, color: "text-white/60" });
+    }
+    const itt = ifThisThenThatData[chapter.id];
+    if (itt) {
+      for (const item of itt.slice(0, 2)) {
+        pool.push({ category: "If This, Then That", text: `"${item.if}" → ${item.then}`, chapterNumber: chapter.number, chapterTitle: chapter.title, color: "text-amber" });
+      }
+    }
+  }
+  return pool;
+}
+
+function shufflePick<T>(arr: T[], count: number): T[] {
+  const copy = [...arr];
+  for (let i = copy.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [copy[i], copy[j]] = [copy[j], copy[i]];
+  }
+  return copy.slice(0, count);
+}
+
 export function Dashboard({ onContinue }: DashboardProps) {
   const videoRef = useRef<HTMLVideoElement>(null);
   const [quoteIndex, setQuoteIndex] = useState(0);
+  const [insights, setInsights] = useState<InsightCard[]>(() => shufflePick(buildInsightPool(), 9));
 
   const chaptersWithQuotes = academyContent.chapters.filter((ch) => ch.quote);
 
@@ -41,6 +82,13 @@ export function Dashboard({ onContinue }: DashboardProps) {
     }, 20000);
     return () => clearInterval(interval);
   }, [chaptersWithQuotes.length]);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setInsights(shufflePick(buildInsightPool(), 9));
+    }, 20000);
+    return () => clearInterval(interval);
+  }, []);
 
   const currentChapter = chaptersWithQuotes[quoteIndex];
 
@@ -88,12 +136,11 @@ export function Dashboard({ onContinue }: DashboardProps) {
       <div>
         <p className="text-xs uppercase tracking-[0.28em] text-white/45 mb-4">Insights</p>
         <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-          {academyContent.chapters.slice(0, 6).map((ch) => (
-            <GlassPanel key={ch.id} className="p-5">
-              <p className="text-xs uppercase tracking-[0.18em] text-teal">
-                Chapter {ch.number}
-              </p>
-              <p className="mt-2 text-sm font-medium">{ch.title}</p>
+          {insights.map((insight, i) => (
+            <GlassPanel key={`${insight.text.slice(0, 20)}-${i}`} className="p-5">
+              <p className={`text-xs uppercase tracking-[0.18em] ${insight.color}`}>{insight.category}</p>
+              <p className="mt-3 text-sm leading-6 text-white/72">{insight.text}</p>
+              <p className="mt-2 text-xs text-white/40">Ch. {insight.chapterNumber} — {insight.chapterTitle}</p>
             </GlassPanel>
           ))}
         </div>
