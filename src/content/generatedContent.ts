@@ -267,7 +267,7 @@ export const academyContent: AcademyContent = {
       "number": 2,
       "title": "The Economics & Psychology Behind Telecom Leases",
       "sourceTitle": "Chapter 2 — The Economics & Psychology Behind Telecom Leases",
-      "quote": "\"Property owners rarely negotiate based on the contract in front of them.",
+      "quote": "Property owners rarely negotiate based on the contract in front of them. They negotiate based on the future they imagine that contract will create.",
       "sections": [
         {
           "title": "Overview",
@@ -499,8 +499,8 @@ export const academyContent: AcademyContent = {
       "id": "chapter-3-understanding-the-property-owner",
       "number": 3,
       "title": "Understanding the Property Owner",
-      "sourceTitle": "Chapter 3 — Understanding the Property Owner",
-      "quote": "",
+      "sourceTitle": "Chapter 3 - Understanding the Property Owner",
+      "quote": "People rarely make financial decisions based solely on money. They make decisions based on what the money represents.",
       "sections": [
         {
           "title": "Overview",
@@ -839,8 +839,8 @@ export const academyContent: AcademyContent = {
       "id": "chapter-4-the-md7-challenger-mindset",
       "number": 4,
       "title": "The MD7 Challenger Mindset",
-      "sourceTitle": "Chapter 4 — The MD7 Challenger Mindset",
-      "quote": "",
+      "sourceTitle": "Chapter 4 - The MD7 Challenger Mindset",
+      "quote": "People don't resist change because they dislike new ideas. They resist change because they haven't yet found a future they trust more than their present.",
       "sections": [
         {
           "title": "Overview",
@@ -1120,8 +1120,8 @@ export const academyContent: AcademyContent = {
       "id": "chapter-5-the-anatomy-of-an-md7-conversation",
       "number": 5,
       "title": "The Anatomy of an MD7 Conversation",
-      "sourceTitle": "Chapter 5 — The Anatomy of an MD7 Conversation",
-      "quote": "",
+      "sourceTitle": "Chapter 5 - The Anatomy of an MD7 Conversation",
+      "quote": "The goal of the first conversation is not to negotiate a lease. It's to earn the privilege of having a second conversation.",
       "sections": [
         {
           "title": "Overview",
@@ -1440,8 +1440,8 @@ export const academyContent: AcademyContent = {
       "id": "chapter-7-the-md7-decision-framework",
       "number": 7,
       "title": "The MD7 Decision Framework",
-      "sourceTitle": "Chapter 7 — The MD7 Decision Framework",
-      "quote": "",
+      "sourceTitle": "Chapter 7 - The MD7 Decision Framework",
+      "quote": "Salespeople don't advance opportunities. Customers do. Every stage in the sales process should represent a decision the customer has made—not an activity the salesperson has completed.",
       "sections": [
         {
           "title": "Overview",
@@ -2067,8 +2067,8 @@ export const academyContent: AcademyContent = {
       "id": "chapter-8-mastering-discovery-conversations",
       "number": 8,
       "title": "Mastering Discovery Conversations",
-      "sourceTitle": "Chapter 8 — Mastering Discovery Conversations",
-      "quote": "",
+      "sourceTitle": "Chapter 8 - Mastering Discovery Conversations",
+      "quote": "The quality of your recommendation will never exceed the quality of your discovery. Customers don't object to good recommendations—they object to recommendations made before they feel understood.",
       "sections": [
         {
           "title": "Overview",
@@ -2396,8 +2396,8 @@ export const academyContent: AcademyContent = {
       "id": "chapter-9-the-emotional-driver-matrix",
       "number": 9,
       "title": "The Emotional Driver Matrix",
-      "sourceTitle": "Chapter 9 — The Emotional Driver Matrix",
-      "quote": "",
+      "sourceTitle": "Chapter 9 - The Emotional Driver Matrix",
+      "quote": "People justify decisions with numbers, but they make decisions based on what those numbers protect, preserve, or create.",
       "sections": [
         {
           "title": "Overview",
@@ -2854,8 +2854,8 @@ export const academyContent: AcademyContent = {
       "id": "chapter-10-challenger-conversation-frameworks",
       "number": 10,
       "title": "Challenger Conversation Frameworks",
-      "sourceTitle": "Chapter 10 — Challenger Conversation Frameworks",
-      "quote": "",
+      "sourceTitle": "Chapter 10 - Challenger Conversation Frameworks",
+      "quote": "The best Challenger conversations don't make customers feel wrong. They make customers feel better informed.",
       "sections": [
         {
           "title": "Overview",
@@ -3193,8 +3193,8 @@ export const academyContent: AcademyContent = {
       "id": "chapter-11-navigating-decision-barriers",
       "number": 11,
       "title": "Navigating Decision Barriers",
-      "sourceTitle": "Chapter 11 — Navigating Decision Barriers",
-      "quote": "",
+      "sourceTitle": "Chapter 11 - Navigating Decision Barriers",
+      "quote": "An objection is rarely a rejection. More often, it's an invitation to better understand the decision the customer is trying to make.",
       "sections": [
         {
           "title": "Executive Insight",
@@ -3640,8 +3640,8 @@ export const academyContent: AcademyContent = {
       "id": "chapter-12-negotiation-value-creation",
       "number": 12,
       "title": "Negotiation & Value Creation",
-      "sourceTitle": "Chapter 12 — Negotiation & Value Creation",
-      "quote": "",
+      "sourceTitle": "Chapter 12 - Negotiation & Value Creation",
+      "quote": "Price is rarely the customer's biggest concern. Confidence is. Great negotiators don't defend value—they help customers recognize it.",
       "sections": [
         {
           "title": "Executive Insight",
@@ -3994,8 +3994,8 @@ export const academyContent: AcademyContent = {
       "id": "chapter-13-gaining-commitment-creating-momentum",
       "number": 13,
       "title": "Gaining Commitment & Creating Momentum",
-      "sourceTitle": "Chapter 13 — Gaining Commitment & Creating Momentum",
-      "quote": "",
+      "sourceTitle": "Chapter 13 - Gaining Commitment & Creating Momentum",
+      "quote": "The best Account Executives never ask for the sale. They ask for the next decision.",
       "sections": [
         {
           "title": "Executive Insight",
@@ -4284,8 +4284,8 @@ export const academyContent: AcademyContent = {
       "id": "chapter-14-reading-the-conversation",
       "number": 14,
       "title": "Reading the Conversation",
-      "sourceTitle": "Chapter 14 — Reading the Conversation",
-      "quote": "",
+      "sourceTitle": "Chapter 14 - Reading the Conversation",
+      "quote": "Customers reveal their confidence through behavior long before they reveal their decision through words.",
       "sections": [
         {
           "title": "Executive Insight",
@@ -4646,8 +4646,8 @@ export const academyContent: AcademyContent = {
       "id": "chapter-15-strategic-engagement-planning",
       "number": 15,
       "title": "Strategic Engagement Planning",
-      "sourceTitle": "Chapter 15 — Strategic Engagement Planning",
-      "quote": "",
+      "sourceTitle": "Chapter 15 - Strategic Engagement Planning",
+      "quote": "Winning individual conversations is important. Winning the engagement requires understanding how every conversation contributes to the customer's decision.",
       "sections": [
         {
           "title": "Executive Insight",
@@ -4959,8 +4959,8 @@ export const academyContent: AcademyContent = {
       "id": "chapter-16-coaching-the-md7-way",
       "number": 16,
       "title": "Coaching the MD7 Way",
-      "sourceTitle": "Chapter 16 — Coaching the MD7 Way",
-      "quote": "",
+      "sourceTitle": "Chapter 16 - Coaching the MD7 Way",
+      "quote": "The purpose of coaching is not to provide answers. It is to improve the quality of the decisions your people make when you're not in the room.",
       "sections": [
         {
           "title": "Executive Insight",
@@ -5258,8 +5258,8 @@ export const academyContent: AcademyContent = {
       "id": "chapter-17-operational-excellence-continuous-improvement",
       "number": 17,
       "title": "Operational Excellence & Continuous Improvement",
-      "sourceTitle": "Chapter 17 — Operational Excellence & Continuous Improvement",
-      "quote": "",
+      "sourceTitle": "Chapter 17 - Operational Excellence & Continuous Improvement",
+      "quote": "Processes create consistency. Reflection creates excellence. Organizations that learn faster than their competitors improve faster than their competitors.",
       "sections": [
         {
           "title": "Executive Insight",

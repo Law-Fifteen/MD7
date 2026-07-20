@@ -1,59 +1,17 @@
-import { ArrowRight, BookOpen, Clock, TrendingUp } from "lucide-react";
-import type { ElementType } from "react";
+import { ArrowRight } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
 import { academyContent } from "../content/generatedContent";
-import { ifThisThenThatData } from "../content/ifThisThenThat";
-import type { Chapter } from "../types";
 import { GlassPanel } from "./GlassPanel";
 
 type DashboardProps = {
-  currentChapter: Chapter;
-  completedCount: number;
   onContinue: () => void;
 };
 
-type InsightCard = {
-  category: string;
-  text: string;
-  chapterNumber: number;
-  chapterTitle: string;
-  color: string;
-};
-
-function buildInsightPool(): InsightCard[] {
-  const pool: InsightCard[] = [];
-  for (const chapter of academyContent.chapters) {
-    for (const sig of chapter.greatAeSignals.slice(0, 2)) {
-      pool.push({ category: "What Great AEs Notice", text: sig, chapterNumber: chapter.number, chapterTitle: chapter.title, color: "text-teal" });
-    }
-    for (const mist of chapter.commonMistakes.slice(0, 2)) {
-      pool.push({ category: "Common Mistakes", text: mist, chapterNumber: chapter.number, chapterTitle: chapter.title, color: "text-amber" });
-    }
-    for (const q of chapter.coachingQuestions.slice(0, 1)) {
-      pool.push({ category: "Personal Reflection", text: q, chapterNumber: chapter.number, chapterTitle: chapter.title, color: "text-white/60" });
-    }
-    const itt = ifThisThenThatData[chapter.id];
-    if (itt) {
-      for (const item of itt.slice(0, 2)) {
-        pool.push({ category: "If This, Then That", text: `"${item.if}" → ${item.then}`, chapterNumber: chapter.number, chapterTitle: chapter.title, color: "text-amber" });
-      }
-    }
-  }
-  return pool;
-}
-
-function shufflePick<T>(arr: T[], count: number): T[] {
-  const copy = [...arr];
-  for (let i = copy.length - 1; i > 0; i--) {
-    const j = Math.floor(Math.random() * (i + 1));
-    [copy[i], copy[j]] = [copy[j], copy[i]];
-  }
-  return copy.slice(0, count);
-}
-
-export function Dashboard({ currentChapter, completedCount, onContinue }: DashboardProps) {
+export function Dashboard({ onContinue }: DashboardProps) {
   const videoRef = useRef<HTMLVideoElement>(null);
-  const [insights, setInsights] = useState<InsightCard[]>(() => shufflePick(buildInsightPool(), 9));
+  const [quoteIndex, setQuoteIndex] = useState(0);
+
+  const chaptersWithQuotes = academyContent.chapters.filter((ch) => ch.quote);
 
   useEffect(() => {
     const video = videoRef.current;
@@ -79,10 +37,12 @@ export function Dashboard({ currentChapter, completedCount, onContinue }: Dashbo
 
   useEffect(() => {
     const interval = setInterval(() => {
-      setInsights(shufflePick(buildInsightPool(), 9));
+      setQuoteIndex((prev) => (prev + 1) % chaptersWithQuotes.length);
     }, 20000);
     return () => clearInterval(interval);
-  }, []);
+  }, [chaptersWithQuotes.length]);
+
+  const currentChapter = chaptersWithQuotes[quoteIndex];
 
   return (
     <div className="space-y-6">
@@ -105,14 +65,19 @@ export function Dashboard({ currentChapter, completedCount, onContinue }: Dashbo
               This academy is designed to improve your decision making ability, improving
               judgement and offering a searchable Field Guide.
             </p>
-            <div className="mt-9 grid gap-4 sm:grid-cols-3">
-              <Metric icon={BookOpen} label="Chapters" value={academyContent.stats.chapterCount.toString()} />
-              <Metric icon={TrendingUp} label="Knowledge Objects" value={academyContent.stats.knowledgeObjectCount.toString()} />
-              <Metric icon={Clock} label="Current Focus" value={`Ch. ${currentChapter.number}`} />
-            </div>
+            {currentChapter && (
+              <div className="mt-8 rounded-2xl border border-white/10 bg-white/[0.06] p-5 backdrop-blur">
+                <p className="text-xs uppercase tracking-[0.22em] text-teal">
+                  Chapter {currentChapter.number} — {currentChapter.title}
+                </p>
+                <p className="mt-3 text-base leading-7 text-white/70 italic">
+                  "{currentChapter.quote}"
+                </p>
+              </div>
+            )}
             <button
               onClick={onContinue}
-              className="mt-9 inline-flex items-center gap-2 rounded-2xl bg-white px-5 py-3 text-sm font-semibold text-academy transition hover:-translate-y-0.5 hover:shadow-lift"
+              className="mt-8 inline-flex items-center gap-2 rounded-2xl bg-white px-5 py-3 text-sm font-semibold text-academy transition hover:-translate-y-0.5 hover:shadow-lift"
             >
               Continue Learning <ArrowRight className="h-4 w-4" />
             </button>
@@ -123,31 +88,16 @@ export function Dashboard({ currentChapter, completedCount, onContinue }: Dashbo
       <div>
         <p className="text-xs uppercase tracking-[0.28em] text-white/45 mb-4">Insights</p>
         <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-          {insights.map((insight, i) => (
-            <GlassPanel key={`${insight.text.slice(0, 20)}-${i}`} className="p-5">
-              <p className={`text-xs uppercase tracking-[0.18em] ${insight.color}`}>{insight.category}</p>
-              <p className="mt-3 text-sm leading-6 text-white/72">{insight.text}</p>
-              <p className="mt-2 text-xs text-white/40">Ch. {insight.chapterNumber} — {insight.chapterTitle}</p>
+          {academyContent.chapters.slice(0, 6).map((ch) => (
+            <GlassPanel key={ch.id} className="p-5">
+              <p className="text-xs uppercase tracking-[0.18em] text-teal">
+                Chapter {ch.number}
+              </p>
+              <p className="mt-2 text-sm font-medium">{ch.title}</p>
             </GlassPanel>
           ))}
         </div>
       </div>
-    </div>
-  );
-}
-
-type MetricProps = {
-  icon: ElementType;
-  label: string;
-  value: string;
-};
-
-function Metric({ icon: Icon, label, value }: MetricProps) {
-  return (
-    <div className="rounded-2xl border border-white/12 bg-white/10 p-4 backdrop-blur">
-      <Icon className="mb-4 h-5 w-5 text-teal" />
-      <p className="text-2xl font-semibold">{value}</p>
-      <p className="mt-1 text-xs uppercase tracking-[0.18em] text-white/45">{label}</p>
     </div>
   );
 }

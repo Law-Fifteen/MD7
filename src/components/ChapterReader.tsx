@@ -70,7 +70,9 @@ export function ChapterReader({
           <div>
             <p className="text-xs uppercase tracking-[0.28em] text-teal">Chapter {chapter.number}</p>
             <h2 className="mt-3 max-w-3xl text-3xl font-semibold leading-tight sm:text-4xl">{chapter.title}</h2>
-            {chapter.quote ? <p className="mt-5 max-w-3xl text-lg leading-8 text-white/70">"{chapter.quote}"</p> : null}
+            {chapter.quote ? (
+              <p className="mt-4 max-w-3xl text-base italic text-white/60">"{chapter.quote}"</p>
+            ) : null}
           </div>
           <button className="rounded-2xl border border-white/15 p-3 text-white/70 transition hover:bg-white/10 hover:text-white" aria-label="Bookmark chapter">
             <Bookmark className="h-5 w-5" />

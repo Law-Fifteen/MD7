@@ -2,6 +2,7 @@ import {
   AlertTriangle,
   BookOpen,
   CheckCircle2,
+  ChevronDown as ChevronDownIcon,
   Compass,
   Eye,
   PanelLeftClose,
@@ -12,6 +13,7 @@ import {
 } from "lucide-react";
 import type { ReactNode } from "react";
 import { useState } from "react";
+import { academyContent } from "../content/generatedContent";
 import { navItems } from "../content/platform";
 
 const icons: Record<string, typeof Compass> = {
@@ -33,6 +35,7 @@ type AppShellProps = {
 
 export function AppShell({ activeView, onNavigate, onSearch, children }: AppShellProps) {
   const [collapsed, setCollapsed] = useState(false);
+  const [learningPathOpen, setLearningPathOpen] = useState(false);
 
   return (
     <div className="flex h-screen overflow-hidden bg-academy text-white">
@@ -56,23 +59,51 @@ export function AppShell({ activeView, onNavigate, onSearch, children }: AppShel
         <nav className="mt-2 flex-1 space-y-1 px-2">
           {navItems.map((item) => {
             const Icon = icons[item];
-            const active = activeView === item;
+            const active = activeView === item || (item === "Learning Path" && activeView.startsWith("Chapter"));
+            const isLearningPath = item === "Learning Path";
             return (
-              <button
-                key={item}
-                onClick={() => onNavigate(item)}
-                title={collapsed ? item : undefined}
-                className={`flex w-full items-center gap-3 rounded-2xl px-3 py-3 text-left text-sm transition ${
-                  collapsed ? "justify-center" : ""
-                } ${
-                  active
-                    ? "bg-white text-academy shadow-lift"
-                    : "text-white/68 hover:bg-white/10 hover:text-white"
-                }`}
-              >
-                <Icon className="h-4 w-4 shrink-0" />
-                {!collapsed && <span className="truncate">{item}</span>}
-              </button>
+              <div key={item}>
+                <button
+                  onClick={() => {
+                    if (isLearningPath) {
+                      setLearningPathOpen((prev) => !prev);
+                    } else {
+                      onNavigate(item);
+                    }
+                  }}
+                  title={collapsed ? item : undefined}
+                  className={`flex w-full items-center gap-3 rounded-2xl px-3 py-3 text-left text-sm transition ${
+                    collapsed ? "justify-center" : ""
+                  } ${
+                    active
+                      ? "bg-white text-academy shadow-lift"
+                      : "text-white/68 hover:bg-white/10 hover:text-white"
+                  }`}
+                >
+                  <Icon className="h-4 w-4 shrink-0" />
+                  {!collapsed && <span className="truncate">{item}</span>}
+                  {!collapsed && isLearningPath && (
+                    <ChevronDownIcon className={`ml-auto h-4 w-4 shrink-0 transition-transform ${learningPathOpen ? "rotate-180" : ""}`} />
+                  )}
+                </button>
+                {isLearningPath && learningPathOpen && !collapsed && (
+                  <div className="mt-1 ml-4 space-y-0.5 border-l border-white/10 pl-3">
+                    {academyContent.chapters.map((ch) => (
+                      <button
+                        key={ch.id}
+                        onClick={() => onNavigate(`Chapter ${ch.number}`)}
+                        className={`flex w-full items-center rounded-xl px-3 py-2 text-left text-xs transition ${
+                          activeView === `Chapter ${ch.number}`
+                            ? "bg-white/15 text-white"
+                            : "text-white/50 hover:bg-white/10 hover:text-white"
+                        }`}
+                      >
+                        {ch.number} {ch.title}
+                      </button>
+                    ))}
+                  </div>
+                )}
+              </div>
             );
           })}
         </nav>

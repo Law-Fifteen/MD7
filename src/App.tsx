@@ -61,8 +61,6 @@ export function App() {
     if (activeView === "Dashboard") {
       return (
         <Dashboard
-          currentChapter={activeChapter}
-          completedCount={completed.length}
           onContinue={() => setActiveView("Learning Path")}
         />
       );
