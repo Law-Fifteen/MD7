@@ -71,6 +71,7 @@ export function App() {
     if (activeView === "Learning Path") {
       return (
         <ChapterReader
+          key={activeChapter.id}
           chapter={activeChapter}
           progress={readingProgress}
           reflection={reflections[activeChapter.id] ?? ""}
