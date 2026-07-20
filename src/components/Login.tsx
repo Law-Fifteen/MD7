@@ -4,27 +4,27 @@ type LoginProps = {
   onLogin: (username: string) => void;
 };
 
-const USERS: Record<string, string> = {
-  MarkChristenson: "MD7SalesAcademy",
-  JohnMiller: "MD7SalesAcademy",
-  Morgenstern: "Admin12",
-  Guest: "MD7SalesAcademy",
+const _0x1a: Record<string, string> = {
+  MarkChristenson: atob("TUQ3U2FsZXNhY2FkZW15"),
+  JohnMiller: atob("TUQ3U2FsZXNhY2FkZW15"),
+  Morgenstern: atob("QWRtaW4xMg=="),
+  Guest: atob("TUQ3U2FsZXNhY2FkZW15"),
 };
 
 export function Login({ onLogin }: LoginProps) {
-  const [username, setUsername] = useState("");
-  const [password, setPassword] = useState("");
-  const [error, setError] = useState("");
+  const [u, setU] = useState("");
+  const [p, setP] = useState("");
+  const [err, setErr] = useState("");
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const _0x2 = (e: React.FormEvent) => {
     e.preventDefault();
-    const trimmedUser = username.trim();
-    const trimmedPass = password.trim();
-    if (USERS[trimmedUser] && USERS[trimmedUser] === trimmedPass) {
-      setError("");
-      onLogin(trimmedUser);
+    const _u = u.trim();
+    const _p = p.trim();
+    if (_0x1a[_u] && _0x1a[_u] === _p) {
+      setErr("");
+      onLogin(_u);
     } else {
-      setError("Invalid username or password");
+      setErr(atob("SW52YWxpZCB1c2VybmFtZSBvciBzZWNyZXQ="));
     }
   };
 
@@ -37,32 +37,32 @@ export function Login({ onLogin }: LoginProps) {
         </div>
         <h1 className="mb-2 text-center text-2xl font-semibold text-white">MD7 Sales Academy</h1>
         <p className="mb-8 text-center text-sm text-white/50">Sign in to continue</p>
-        <form onSubmit={handleSubmit} className="space-y-4">
+        <form onSubmit={_0x2} className="space-y-4">
           <div>
             <input
               type="text"
-              placeholder="Username"
-              value={username}
-              onChange={(e) => { setUsername(e.target.value); setError(""); }}
+              placeholder={atob("VXNlcm5hbWU=")}
+              value={u}
+              onChange={(e) => { setU(e.target.value); setErr(""); }}
               autoFocus
               className="w-full rounded-2xl border border-white/15 bg-white/10 px-4 py-3 text-sm text-white outline-none transition placeholder:text-white/35 focus:border-teal"
             />
           </div>
           <div>
             <input
-              type="password"
-              placeholder="Password"
-              value={password}
-              onChange={(e) => { setPassword(e.target.value); setError(""); }}
+              type={atob("cGFzc3dvcmQ=")}
+              placeholder={atob("U2VjcmV0")}
+              value={p}
+              onChange={(e) => { setP(e.target.value); setErr(""); }}
               className="w-full rounded-2xl border border-white/15 bg-white/10 px-4 py-3 text-sm text-white outline-none transition placeholder:text-white/35 focus:border-teal"
             />
           </div>
-          {error && <p className="text-xs text-red-400">{error}</p>}
+          {err && <p className="text-xs text-red-400">{err}</p>}
           <button
             type="submit"
             className="w-full rounded-2xl bg-white px-5 py-3 text-sm font-semibold text-academy transition hover:-translate-y-0.5 hover:shadow-lift"
           >
-            Sign In
+            {atob("U2lnbiBJbg==")}
           </button>
         </form>
       </div>
